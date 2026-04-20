@@ -20,6 +20,7 @@ export default function Projects() {
       {/* Texto */}
       <Command command="$ ls -la ./projects" />
 
+      {/* Proyectos */}
       <Box className="cards">
         {projects.map((p) => (
           <Card
@@ -75,6 +76,7 @@ export default function Projects() {
         ))}
       </Box>
 
+      {/* Contador de proyectos */}
       <Box>
         <Typography className="footer-projects">
           $ total {projects.length} proyectos

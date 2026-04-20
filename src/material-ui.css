@@ -13,7 +13,7 @@
 
 .MuiBox-root.windows {
   background: var(--color-menu);
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 8px 8px 0 0;
 }
 
@@ -170,4 +170,30 @@
 .MuiTypography-root.footer-projects {
   font-size: 1rem;
   font-family: var(--text-family);
+}
+
+.MuiCard-root.skill-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-terminal);
+  margin-bottom: 15px;
+}
+
+.MuiCard-root.skill-card:hover {
+  border-color: var(--color-select-yellow);
+}
+
+.MuiCardHeader-root.skill-header {
+  color: var(--color-select-yellow);
+  padding-bottom: 0;
+}
+
+.MuiListItem-root.skill-item {
+  word-break: keep-all;
+  font-family: var(--text-family);
+}
+
+.MuiTypography-root.skill-description {
+  color: var(--color-text);
+  font-family: var(--text-family);
+  font-size: var(--text-size-span);
 }

@@ -25,10 +25,9 @@ export default function About() {
           lineHeight: 1.6,
         }}
       >
-        Desarrollador backend apasionado por crear APIs robustas y escalables.
-        Especializado en arquitecturas de microservicios, bases de datos y
-        optimización de rendimiento. Me encanta resolver problemas complejos y
-        escribir código limpio y mantenible.
+        Desarrollador back-end con experiencia en desarrollo web y sistemas de gestión de bases de datos. Apasionado por la resolución de problemas y el aprendizaje continuo en el campo de la tecnología.
+        Buscando expandir mis habilidades para convertirme en un desarrollador full-stack y contribuir al éxito de proyectos innovadores.
+        Apasionado por Linux.
       </Typography>
 
       {/* Caja de informacion */}
