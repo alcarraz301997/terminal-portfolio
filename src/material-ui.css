@@ -87,6 +87,7 @@
   font-family: var(--text-family);
   color: var(--color-text);
   font-size: 1rem;
+  word-break: break-all;
 }
 
 .MuiGrid-root.grid-information {
@@ -112,4 +113,61 @@
   font-family: var(--text-family);
   color: var(--color-text);
   font-size: 1rem;
+}
+
+.MuiBox-root.cards {
+  margin-top: 20px;
+}
+
+.MuiCard-root.card {
+  border: 1px solid var(--color-border);
+  background: var(--color-terminal);
+  margin-bottom: 15px;
+}
+
+.MuiCard-root.card:hover {
+  border-color: var(--color-select-yellow);
+}
+
+.MuiCardHeader-root.card-header {
+  color: var(--color-select-yellow);
+  padding-bottom: 0;
+}
+
+.MuiTypography-root.card-title {
+  font-family: var(--text-family);
+  font-size: 1.2rem;
+}
+
+.MuiIconButton-root.icon-button {
+  color: var(--color-text);
+}
+
+.MuiIconButton-root.icon-button:hover {
+  color: var(--color-select-yellow);
+  background: var(--color-terminal);
+}
+
+.MuiTypography-root.card-description {
+  color: var(--color-text);
+  font-family: var(--text-family);
+}
+
+.MuiBox-root.box-projects {
+  margin-top: 15px;
+  border-radius: 3px;
+  border: 1px solid var(--color-select-yellow);
+  padding: 5px;
+  font-size: var(--text-size-span);
+  color: var(--color-select-yellow);
+  /* background: var(--color-background-yellow); */
+}
+
+.MuiBox-root.box-projects:hover {
+  background: var(--color-background-yellow);
+}
+
+.MuiTypography-root.footer-projects {
+  font-size: 1rem;
+  font-family: var(--text-family);
 }
