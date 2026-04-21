@@ -1,9 +1,9 @@
 :root {
   /* colores */
-  --color-main: rgb(34, 5, 34);
-  --color-terminal: rgb(43, 6, 43);
-  --color-menu: rgb(59, 4, 59);
-  --color-information: rgb(61, 2, 61);
+  --color-main: rgb(31, 4, 31);
+  --color-terminal: rgb(32, 4, 32);
+  --color-menu: rgb(44, 4, 44);
+  --color-information: rgb(46, 2, 46);
   --color-whoami: rgb(37, 36, 37);
   --color-border: rgb(97, 38, 97);
   --color-text: rgb(183, 199, 226);

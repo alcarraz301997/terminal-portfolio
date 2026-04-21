@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import type { Experience } from "../../content/experiences/Experience";
 import { getExperiences } from "../../loader/ExperienceLoader";
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Experience() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
@@ -37,21 +39,18 @@ export default function Experience() {
                 <Typography className="card-title">{e.title}</Typography>
               }
               subheader={
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, pt: 1 }}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1, lineHeight:1  }}>
                     <BusinessCenterIcon sx={{ color: "var(--color-select-orange)", fontSize: "var(--text-size-span)" }}/>
                     <Typography className="experience-subtitle">{e.company}</Typography>
                   </Box>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1, lineHeight: 1  }}>
-                    <BusinessCenterIcon sx={{ color: "var(--color-select-orange)", fontSize: "var(--text-size-span)" }}/>
-                    <Typography className="experience-subtitle">{e.start_year}</Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, lineHeight: 1  }}>
-                    <BusinessCenterIcon sx={{ color: "var(--color-select-orange)", fontSize: "var(--text-size-span)" }}/>
+                    <CalendarTodayIcon sx={{ color: "var(--color-select-orange)", fontSize: "var(--text-size-span)" }}/>
+                    <Typography className="experience-subtitle">{e.start_year} - </Typography>
                     <Typography className="experience-subtitle">{present(e.end_year)}</Typography>
                   </Box>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1, lineHeight: 1  }}>
-                    <BusinessCenterIcon sx={{ color: "var(--color-select-orange)", fontSize: "var(--text-size-span)" }}/>
+                    <LocationOnIcon sx={{ color: "var(--color-select-orange)", fontSize: "var(--text-size-span)" }}/>
                     <Typography className="experience-subtitle">{e.city}</Typography>
                   </Box>
                 </Box>
@@ -75,7 +74,7 @@ export default function Experience() {
                       primary={
                         <Typography
                           className="skill-description"
-                          sx={{ whiteSpace: "nowrap" }}
+                          sx={{ whiteSpace: "wrap" }}
                         >
                           ▸ {d}
                         </Typography>

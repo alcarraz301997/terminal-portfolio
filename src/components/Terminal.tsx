@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import Header from "./Header";
 import TabMenu from "./TabMenu";
+import Footer from "./Footer";
 
 export default function Terminal() {
 
@@ -10,6 +11,7 @@ export default function Terminal() {
     >
       <Header/>
       <TabMenu/>
+      <Footer/>
     </Box>
   )
 }
