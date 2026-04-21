@@ -6,9 +6,11 @@
   --color-information: rgb(61, 2, 61);
   --color-whoami: rgb(37, 36, 37);
   --color-border: rgb(97, 38, 97);
-  --color-text: rgb(176, 183, 194);
+  --color-text: rgb(183, 199, 226);
+  --color-text-description: rgb(141, 145, 151);
   --color-select-yellow: rgb(107, 230, 0);
   --color-background-yellow: rgb(32, 46, 30);
+  --color-select-orange: rgb(235, 154, 3);
   --color-select-blue: rgb(21, 36, 255);
   --color-text-windows-code: rgb(255, 75, 10);
 

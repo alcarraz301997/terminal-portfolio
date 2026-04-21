@@ -197,3 +197,21 @@
   font-family: var(--text-family);
   font-size: var(--text-size-span);
 }
+
+.MuiCard-root.experience-card {
+  border-radius: 0;
+  border-left: 3px solid var(--color-border);
+  background: var(--color-terminal);
+  margin-bottom: 15px;
+}
+
+.MuiCard-root.experience-card:hover {
+  border-color: var(--color-select-yellow);
+}
+
+.MuiTypography-root.experience-subtitle {
+  padding-top: 5px;
+  font-size: var(--text-size-span);
+  color: var(--color-text-description);
+  font-family: var(--text-family);
+}

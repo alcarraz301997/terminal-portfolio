@@ -80,10 +80,6 @@ export default function Skills() {
                   <List
                     sx={{
                       display: "grid",
-                      gridTemplateColumns: {
-                        xs: "1fr",
-                        sm: "1fr 1fr",
-                      },
                       gap: 1,
                     }}
                   >
@@ -94,6 +90,7 @@ export default function Skills() {
                         sx={{ py: 0, minHeight: "unset" }}
                       >
                         <ListItemText
+                          sx={{ m:0 }}
                           primary={
                             <Typography
                               className="skill-description"
