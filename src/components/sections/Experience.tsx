@@ -6,17 +6,19 @@ import { getExperiences } from "../../loader/ExperienceLoader";
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Experience() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
+  const { language } = useLanguage();
 
   useEffect(() => {
-    getExperiences().then(setExperiences);
-  }, [])
+    getExperiences(language).then(setExperiences);
+  }, [language])
 
   const present = (year?: number) => {
     if (!year) {
-      return 'Presente';
+      return language === "es" ? "Presente" : "Present";
     }
     return year;
   }

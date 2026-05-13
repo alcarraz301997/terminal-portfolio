@@ -19,31 +19,37 @@ import DnsOutlinedIcon from "@mui/icons-material/DnsOutlined";
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined";
 import RouteOutlinedIcon from "@mui/icons-material/RouteOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Skills() {
   const [skills, setSkills] = useState<Skill[]>([]);
+  const { language } = useLanguage();
 
   useEffect(() => {
-    getSkills().then(setSkills);
-  }, []);
+    getSkills(language).then(setSkills);
+  }, [language]);
 
   const getIcon = (tech: string) => {
     switch (tech) {
+      case "Languages":
       case "Lenguajes":
         return <CodeIcon />;
 
       case "Frameworks":
         return <StorageOutlinedIcon />;
 
+      case "Databases":
       case "Bases de Datos":
         return <DnsOutlinedIcon />;
 
       case "Cloud & DevOps":
         return <CloudOutlinedIcon />;
 
+      case "Tools":
       case "Herramientas":
         return <RouteOutlinedIcon />;
 
+      case "Security":
       case "Seguridad":
         return <ShieldOutlinedIcon />;
 

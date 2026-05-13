@@ -6,13 +6,15 @@ import { getProjects } from "../../loader/ProjectsLoader";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import CodeIcon from '@mui/icons-material/Code';
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const { language } = useLanguage();
 
   useEffect(() => {
-    getProjects().then(setProjects);
-  }, [])
+    getProjects(language).then(setProjects);
+  }, [language])
 
   return (
     <Box className="sections">
@@ -79,7 +81,7 @@ export default function Projects() {
       {/* Contador de proyectos */}
       <Box>
         <Typography className="footer-projects">
-          $ total {projects.length} proyectos
+          $ total {projects.length} {language === "es" ? "proyectos" : "projects"}
         </Typography>
       </Box>
     </Box>

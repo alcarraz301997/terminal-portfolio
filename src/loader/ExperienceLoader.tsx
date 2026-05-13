@@ -1,8 +1,16 @@
-
 import type { Experience } from "../content/experiences/Experience";
-import experiences from "../content/experiences/experiences.json";
+import experiencesEn from "../content/experiences/en/experiences.json";
+import experiencesEs from "../content/experiences/es/experiences.json";
+import type { Language } from "../context/LanguageContext";
 
-export async function getExperiences(): Promise<Experience[]> {
+const experiencesByLanguage = {
+  en: experiencesEn,
+  es: experiencesEs,
+} satisfies Record<Language, typeof experiencesEn>;
+
+export async function getExperiences(language: Language): Promise<Experience[]> {
+  const experiences = experiencesByLanguage[language];
+
   return [...experiences]
     .reverse()
     .map((experience, index) => {

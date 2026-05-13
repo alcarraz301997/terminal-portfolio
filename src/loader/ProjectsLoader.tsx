@@ -1,7 +1,16 @@
 import type { Project } from "../content/projects/Project";
-import projects from '../content/projects/projects.json';
+import projectsEn from "../content/projects/en/projects.json";
+import projectsEs from "../content/projects/es/projects.json";
+import type { Language } from "../context/LanguageContext";
 
-export async function getProjects(): Promise<Project[]> {
+const projectsByLanguage = {
+  en: projectsEn,
+  es: projectsEs,
+} satisfies Record<Language, typeof projectsEn>;
+
+export async function getProjects(language: Language): Promise<Project[]> {
+  const projects = projectsByLanguage[language];
+
   return projects.map((project, index) => {
     return {
       id: index,

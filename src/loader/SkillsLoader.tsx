@@ -1,7 +1,16 @@
 import type { Skill } from "../content/skills/Skill";
-import skills from "../content/skills/skills.json";
+import skillsEn from "../content/skills/en/skills.json";
+import skillsEs from "../content/skills/es/skills.json";
+import type { Language } from "../context/LanguageContext";
 
-export async function getSkills(): Promise<Skill[]> {
+const skillsByLanguage = {
+  en: skillsEn,
+  es: skillsEs,
+} satisfies Record<Language, typeof skillsEn>;
+
+export async function getSkills(language: Language): Promise<Skill[]> {
+  const skills = skillsByLanguage[language];
+
   return skills.map((skill, index) => {
     return {
       id: index,

@@ -225,3 +225,13 @@
   font-family: var(--text-family);
   font-size: var(--text-size-span);
 }
+
+.MuiToggleButtonGroup-root.box-language {
+  background: var(--color-menu);
+}
+
+.MuiTypography-root.text-toggle {
+  /* color: var(--color-text); */
+  font-family: var(--text-family);
+  font-size: 0.9rem;
+}

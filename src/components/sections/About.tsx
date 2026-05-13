@@ -1,21 +1,30 @@
+import { useEffect, useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Command from "../Command";
+import type { About } from "../../content/about/About";
+import { getAbout } from "../../loader/AboutLoader";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function About() {
+  const [about, setAbout] = useState<About | null>(null);
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    getAbout(language).then(setAbout);
+  }, [language]);
+
+  if (!about) return null;
+
   return (
     <Box className="sections">
-
-      {/* Texto */}
       <Command command="$ cat about.txt" />
 
-      {/* Titulo */}
-      <Typography className="title">▸ Backend Developer</Typography>
+      <Typography className="title">▸ {about.title}</Typography>
 
-      {/* Descripción */}
       <Typography
         className="description"
         sx={{
@@ -25,45 +34,41 @@ export default function About() {
           lineHeight: 1.6,
         }}
       >
-        Desarrollador back-end con experiencia en desarrollo web y sistemas de gestión de bases de datos. Apasionado por la resolución de problemas y el aprendizaje continuo en el campo de la tecnología.
-        Buscando expandir mis habilidades para convertirme en un desarrollador full-stack y contribuir al éxito de proyectos innovadores.
-        Apasionado por Linux.
+        {about.description}
       </Typography>
 
-      {/* Caja de informacion */}
       <Box className="information">
         <Grid container spacing={2}>
           <Grid size={6} sx={{ display: "flex", alignItems: "center", gap: 1}}>
             <PersonIcon className="icon-information" />
             <Typography className="text-information">
-              Nombre: Junior Alcarraz Montes
+              {about.name}
             </Typography>
           </Grid>
           <Grid size={6} sx={{ display: "flex", alignItems: "center", gap: 1}}>
             <EmailIcon className="icon-information" />
             <Typography className="text-information">
-              guillermo.junior.30@gmail.com
+              {about.email}
             </Typography>
           </Grid>
           <Grid size={6} sx={{ display: "flex", alignItems: "center", gap: 1}}>
             <LocationOnIcon className="icon-information" />
             <Typography className="text-information">
-              Lima, Perú
+              {about.location}
             </Typography>
           </Grid>
           <Grid size={6} sx={{ display: "flex", alignItems: "center", gap: 1}}>
             <GitHubIcon className="icon-information" />
             <Typography className="text-information">
-              github.com/alcarraz301997
+              {about.github}
             </Typography>
           </Grid>
         </Grid>
       </Box>
 
-      {/* Whoami */}
       <Box className="whoami">
-        <Typography className="text-whoami">$ whoami</Typography>
-        <Typography className="description-whoami">Un desarrollador que convierte café en código y bugs en features 🚀</Typography>
+        <Typography className="text-whoami">{about.whoamiCommand}</Typography>
+        <Typography className="description-whoami">{about.whoamiText}</Typography>
       </Box>
     </Box>
   );
