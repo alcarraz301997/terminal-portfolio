@@ -14,7 +14,7 @@ export default function About() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    getAbout(language).then(setAbout);
+    setAbout(getAbout(language));
   }, [language]);
 
   if (!about) return null;

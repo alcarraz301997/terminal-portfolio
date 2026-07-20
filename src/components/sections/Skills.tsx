@@ -26,7 +26,7 @@ export default function Skills() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    getSkills(language).then(setSkills);
+    setSkills(getSkills(language));
   }, [language]);
 
   const getIcon = (tech: string) => {

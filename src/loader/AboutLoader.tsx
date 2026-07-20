@@ -8,7 +8,7 @@ const aboutByLanguage = {
   es: aboutEs,
 } satisfies Record<Language, typeof aboutEn>;
 
-export async function getAbout(language: Language): Promise<About> {
+export function getAbout(language: Language): About {
   const about = aboutByLanguage[language];
   return about as About;
 }

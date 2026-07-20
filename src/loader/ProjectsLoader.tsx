@@ -8,7 +8,7 @@ const projectsByLanguage = {
   es: projectsEs,
 } satisfies Record<Language, typeof projectsEn>;
 
-export async function getProjects(language: Language): Promise<Project[]> {
+export function getProjects(language: Language): Project[] {
   const projects = projectsByLanguage[language];
 
   return projects.map((project, index) => {

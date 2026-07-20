@@ -13,7 +13,7 @@ export default function Experience() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    getExperiences(language).then(setExperiences);
+    setExperiences(getExperiences(language));
   }, [language])
 
   const present = (year?: number) => {
@@ -76,7 +76,6 @@ export default function Experience() {
                       primary={
                         <Typography
                           className="skill-description"
-                          sx={{ whiteSpace: "wrap" }}
                         >
                           ▸ {d}
                         </Typography>

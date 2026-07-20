@@ -8,7 +8,7 @@ const experiencesByLanguage = {
   es: experiencesEs,
 } satisfies Record<Language, typeof experiencesEn>;
 
-export async function getExperiences(language: Language): Promise<Experience[]> {
+export function getExperiences(language: Language): Experience[] {
   const experiences = experiencesByLanguage[language];
 
   return [...experiences]

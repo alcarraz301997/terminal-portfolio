@@ -13,7 +13,7 @@ export default function Projects() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    getProjects(language).then(setProjects);
+    setProjects(getProjects(language));
   }, [language])
 
   return (

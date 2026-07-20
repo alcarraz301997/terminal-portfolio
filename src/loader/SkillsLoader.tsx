@@ -8,7 +8,7 @@ const skillsByLanguage = {
   es: skillsEs,
 } satisfies Record<Language, typeof skillsEn>;
 
-export async function getSkills(language: Language): Promise<Skill[]> {
+export function getSkills(language: Language): Skill[] {
   const skills = skillsByLanguage[language];
 
   return skills.map((skill, index) => {
