@@ -28,12 +28,14 @@ jobs:
           npm install
           npm run build
 
-      # 4. Subir la carpeta compilada a Hostinger por FTP
+      # Paso 4: Subir la carpeta compilada a Hostinger por FTP
       - name: Subir build a Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/ # ⚠️ Si usas Create React App cambia 'dist' por 'build'
+          port: 21 # Puerto estándar de FTP en Hostinger
+          protocol: ftp # O usa 'ftps' si tienes SSL activo en el FTP de Hostinger
+          local-dir: ./dist/ # O ./build/ según tu proyecto React
           server-dir: /public_html/
