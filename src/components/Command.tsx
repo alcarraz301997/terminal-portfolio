@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
 
 type CommandProps = {
   command: string;
@@ -22,22 +21,12 @@ export default function Command({ command, speed = 40 }: CommandProps) {
   }, [index, command, speed]);
 
   return (
-    <Typography aria-live="polite">
-      <Box component="span" sx={{ color: "var(--color-select-yellow)" }}>
-        junior-alcarraz@portfolio
-      </Box>
-      <Box component="span" sx={{ color: "var(--color-text)" }}>
-        :
-      </Box>
-      <Box component="span" sx={{ color: "var(--color-select-blue)" }}>
-        ~
-      </Box>
-      <Box component="span" sx={{ color: "var(--color-terminal-green)" }}>
-        {displayedText}
-      </Box>
-      <Box component="span" className="cursor" sx={{ color: "var(--color-text)" }}>
-        █
-      </Box>
-    </Typography>
+    <p className="command-typing" aria-live="polite">
+      <span className="command-user">junior-alcarraz@portfolio</span>
+      <span className="command-separator">:</span>
+      <span className="command-path">~</span>
+      <span className="command-typed">{displayedText}</span>
+      <span className="command-cursor cursor">█</span>
+    </p>
   );
 }

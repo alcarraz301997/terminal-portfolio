@@ -1,11 +1,8 @@
-import { Box, Card, CardHeader, CardContent, Typography, IconButton } from "@mui/material";
-import Command from "../Command";
 import { useEffect, useState } from "react";
-import type { Project } from "../../content/projects/Project";
+import { GitHubIcon, LaunchIcon, CodeIcon } from "../Icons";
+import Command from "../Command";
+import type { Project } from "../../content/projects/projects.schema";
 import { getProjects } from "../../loader/ProjectsLoader";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LaunchIcon from '@mui/icons-material/Launch';
-import CodeIcon from '@mui/icons-material/Code';
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function Projects() {
@@ -14,78 +11,57 @@ export default function Projects() {
 
   useEffect(() => {
     setProjects(getProjects(language));
-  }, [language])
+  }, [language]);
 
   return (
-    <Box className="sections">
-
-      {/* Texto */}
+    <div className="sections">
       <Command command="$ ls -la ./projects" />
 
-      {/* Proyectos */}
-      <Box className="cards">
+      <div className="cards">
         {projects.map((p) => (
-          <Card
-            className="card"
-            key={p.id}
-          >
-            <CardHeader
-              className="card-header"
-              title={
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <CodeIcon />
-                  <Typography component="h3" className="card-title">{p.title}</Typography>
-                </Box>
-              }
-              action={
-                <Box>
-                  <IconButton
-                    className="icon-button"
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`GitHub repository for ${p.title}`}
-                  >
-                    <GitHubIcon />
-                  </IconButton>
-                  <IconButton
-                    className="icon-button"
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Live demo for ${p.title}`}
-                  >
-                    <LaunchIcon />
-                  </IconButton>
-                </Box>
-              }
-            />
+          <div className="card" key={p.id}>
+            <div className="card-header">
+              <div className="card-header-title">
+                <CodeIcon />
+                <h3 className="card-title">{p.title}</h3>
+              </div>
+              <div className="card-header-actions">
+                <a
+                  className="icon-button"
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`GitHub repository for ${p.title}`}
+                >
+                  <GitHubIcon />
+                </a>
+                <a
+                  className="icon-button"
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Live demo for ${p.title}`}
+                >
+                  <LaunchIcon />
+                </a>
+              </div>
+            </div>
 
-            <CardContent>
-              <Typography className="card-description">{p.description}</Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 1,
-                }}
-              >
+            <div className="card-content">
+              <p className="card-description">{p.description}</p>
+              <div className="tech-tags">
                 {p.tech.map((t) => (
-                  <Box className="box-projects" key={t}>{t}</Box>
+                  <span className="box-projects" key={t}>{t}</span>
                 ))}
-              </Box>
-            </CardContent>
-
-          </Card>
+              </div>
+            </div>
+          </div>
         ))}
-      </Box>
+      </div>
 
-      {/* Contador de proyectos */}
-      <Box>
-        <Typography className="footer-projects">
-          $ total {projects.length} {language === "es" ? "proyectos" : "projects"}
-        </Typography>
-      </Box>
-    </Box>
+      <p className="footer-projects">
+        $ total {projects.length} {language === "es" ? "proyectos" : "projects"}
+      </p>
+    </div>
   );
 }
