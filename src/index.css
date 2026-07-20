@@ -47,3 +47,48 @@ span {
   color: rgb(255, 165, 0);
   font-size: 1rem;
 }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 10000;
+  background: var(--color-menu);
+  color: var(--color-select-yellow);
+  border: 2px solid var(--color-select-yellow);
+  padding: 8px 16px;
+  font-family: var(--text-family);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-select-yellow);
+  outline-offset: 2px;
+}
+
+.MuiTab-root:focus-visible {
+  outline: 2px solid var(--color-select-yellow);
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

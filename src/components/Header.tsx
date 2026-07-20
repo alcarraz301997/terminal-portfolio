@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 export default function Header() {
   return (
     <Box
+      component="header"
       className="windows"
     >
       <Typography className="command">

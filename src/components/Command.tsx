@@ -22,7 +22,7 @@ export default function Command({ command, speed = 40 }: CommandProps) {
   }, [index, command, speed]);
 
   return (
-    <Typography>
+    <Typography aria-live="polite">
       <Box component="span" sx={{ color: "var(--color-select-yellow)" }}>
         junior-alcarraz@portfolio
       </Box>

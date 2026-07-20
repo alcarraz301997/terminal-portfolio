@@ -38,7 +38,7 @@ export default function Experience() {
             <CardHeader
               className="card-header"
               title={
-                <Typography className="card-title">{e.title}</Typography>
+                <Typography component="h3" className="card-title">{e.title}</Typography>
               }
               subheader={
                 <Box sx={{ display: "flex", alignItems: "center", gap: 2, pt: 1 }}>

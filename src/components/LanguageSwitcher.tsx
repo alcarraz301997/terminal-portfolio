@@ -31,6 +31,7 @@ export default function LanguageSwitcher() {
         exclusive
         onChange={handleChange}
         size="small"
+        aria-label="Switch language"
       >
         <ToggleButton value="en">
           <Typography

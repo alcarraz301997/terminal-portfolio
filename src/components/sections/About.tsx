@@ -23,7 +23,7 @@ export default function About() {
     <Box className="sections">
       <Command command="$ cat about.txt" />
 
-      <Typography className="title">▸ {about.title}</Typography>
+      <Typography component="h2" className="title">▸ {about.title}</Typography>
 
       <Typography
         className="description"

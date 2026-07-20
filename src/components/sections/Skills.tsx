@@ -78,7 +78,7 @@ export default function Skills() {
                   title={
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                       {getIcon(s.title)}
-                      <Typography className="card-title">{s.title}</Typography>
+                      <Typography component="h3" className="card-title">{s.title}</Typography>
                     </Box>
                   }
                 />

@@ -34,7 +34,7 @@ export default function Projects() {
               title={
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <CodeIcon />
-                  <Typography className="card-title">{p.title}</Typography>
+                  <Typography component="h3" className="card-title">{p.title}</Typography>
                 </Box>
               }
               action={
@@ -44,6 +44,7 @@ export default function Projects() {
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`GitHub repository for ${p.title}`}
                   >
                     <GitHubIcon />
                   </IconButton>
@@ -52,6 +53,7 @@ export default function Projects() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Live demo for ${p.title}`}
                   >
                     <LaunchIcon />
                   </IconButton>
