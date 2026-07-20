@@ -15,16 +15,29 @@ const routeToTab = {
   "#/experience": "4",
 } as const;
 
-const About = lazy(() => import("./sections/About"));
-const Projects = lazy(() => import("./sections/Projects"));
-const Skills = lazy(() => import("./sections/Skills"));
-const Experience = lazy(() => import("./sections/Experience"));
+// Funciones de import para precarga
+const importAbout = () => import("./sections/About");
+const importProjects = () => import("./sections/Projects");
+const importSkills = () => import("./sections/Skills");
+const importExperience = () => import("./sections/Experience");
+
+const About = lazy(importAbout);
+const Projects = lazy(importProjects);
+const Skills = lazy(importSkills);
+const Experience = lazy(importExperience);
 
 const tabLabels: Record<string, string> = {
   "1": "about.sh",
   "2": "projects.sh",
   "3": "skills.sh",
   "4": "experience.sh",
+};
+
+const tabImporters: Record<string, () => Promise<unknown>> = {
+  "1": importAbout,
+  "2": importProjects,
+  "3": importSkills,
+  "4": importExperience,
 };
 
 export default function TabMenu() {
@@ -40,6 +53,11 @@ export default function TabMenu() {
 
   const handleChange = (tab: string) => {
     setHash(tabRoutes[tab as keyof typeof tabRoutes]);
+  };
+
+  const handleMouseEnter = (tab: string) => {
+    const importer = tabImporters[tab];
+    if (importer) importer();
   };
 
   const renderContent = () => {
@@ -73,6 +91,7 @@ export default function TabMenu() {
               aria-controls={panelId(key)}
               id={tabId(key)}
               onClick={() => handleChange(key)}
+              onMouseEnter={() => handleMouseEnter(key)}
             >
               {label}
             </button>
