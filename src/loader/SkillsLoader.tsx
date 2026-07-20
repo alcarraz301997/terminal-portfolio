@@ -1,4 +1,5 @@
-import type { Skill } from "../content/skills/Skill";
+import type { Skill } from "../content/skills/skills.schema";
+import { skillsJsonSchema } from "../content/skills/skills.schema";
 import skillsEn from "../content/skills/en/skills.json";
 import skillsEs from "../content/skills/es/skills.json";
 import type { Language } from "../context/LanguageContext";
@@ -8,14 +9,13 @@ const skillsByLanguage = {
   es: skillsEs,
 } satisfies Record<Language, typeof skillsEn>;
 
-export async function getSkills(language: Language): Promise<Skill[]> {
-  const skills = skillsByLanguage[language];
+export function getSkills(language: Language): Skill[] {
+  const raw = skillsByLanguage[language];
+  const skills = skillsJsonSchema.parse(raw);
 
-  return skills.map((skill, index) => {
-    return {
-      id: index,
-      title: skill.title,
-      tech: skill.tech ?? [],
-    } as Skill;
-  });
+  return skills.map((skill, index) => ({
+    id: index,
+    title: skill.title,
+    tech: skill.tech,
+  }));
 }

@@ -1,76 +1,90 @@
-import { useState } from "react";
-import { Box, Tabs, Tab } from "@mui/material";
+import { useEffect } from "react";
+import { useHash } from "../hooks/useHash";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import Experience from "./sections/Experience";
 
-export default function TabMenu() {
-  const [value, setValue] = useState("1");
+const tabRoutes = {
+  "1": "#/about",
+  "2": "#/projects",
+  "3": "#/skills",
+  "4": "#/experience",
+} as const;
 
-  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+const routeToTab = {
+  "#/about": "1",
+  "#/projects": "2",
+  "#/skills": "3",
+  "#/experience": "4",
+} as const;
+
+const tabLabels: Record<string, string> = {
+  "1": "about.sh",
+  "2": "projects.sh",
+  "3": "skills.sh",
+  "4": "experience.sh",
+};
+
+export default function TabMenu() {
+  const [hash, setHash] = useHash();
+
+  const currentTab = routeToTab[hash as keyof typeof routeToTab] || "1";
+
+  useEffect(() => {
+    if (!hash || hash === "#/" || hash === "") {
+      setHash("#/about");
+    }
+  }, []);
+
+  const handleChange = (tab: string) => {
+    setHash(tabRoutes[tab as keyof typeof tabRoutes]);
   };
 
   const renderContent = () => {
-    switch (value) {
-      case '1':
-        return <About/>;
-
-      case '2':
-        return <Projects/>;
-
-      case '3':
-        return <Skills/>;
-
-      case '4':
-        return <Experience/>;
-
+    switch (currentTab) {
+      case "1":
+        return <About />;
+      case "2":
+        return <Projects />;
+      case "3":
+        return <Skills />;
+      case "4":
+        return <Experience />;
       default:
-        return <About/>;
+        return <About />;
     }
-  }
+  };
+
+  const tabId = (v: string) => `tab-${v}`;
+  const panelId = (v: string) => `tabpanel-${v}`;
 
   return (
     <>
-      <Box className="tab-principal">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="menu"
-          sx={{
-            "& .MuiTabs-indicator": {
-              display: "none",
-            },
-          }}
-        >
-          <Tab
-            className="tab-terminal"
-            value="1"
-            label="about.sh"
-            disableRipple
-          />
-          <Tab
-            className="tab-terminal"
-            value="2"
-            label="projects.sh"
-            disableRipple
-          />
-          <Tab
-            className="tab-terminal"
-            value="3"
-            label="skills.sh"
-            disableRipple
-          />
-          <Tab
-            className="tab-terminal"
-            value="4"
-            label="experience.sh"
-            disableRipple
-          />
-        </Tabs>
-      </Box>
-      {renderContent()}
+      <nav className="tab-principal">
+        <div className="tabs-container" role="tablist" aria-label="Portfolio sections">
+          {Object.entries(tabLabels).map(([key, label]) => (
+            <button
+              key={key}
+              className={`tab-terminal ${currentTab === key ? "active" : ""}`}
+              role="tab"
+              aria-selected={currentTab === key}
+              aria-controls={panelId(key)}
+              id={tabId(key)}
+              onClick={() => handleChange(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </nav>
+      <div
+        role="tabpanel"
+        id={panelId(currentTab)}
+        aria-labelledby={tabId(currentTab)}
+      >
+        {renderContent()}
+      </div>
     </>
   );
 }

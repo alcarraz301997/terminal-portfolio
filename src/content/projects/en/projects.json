@@ -1,5 +1,18 @@
 [
   {
+    "title": "Kizuna App",
+    "description": "Wedding expense management application with claymorphism design, mobile-first responsive layout, and customizable theme system. Features adaptive tables, touch-friendly forms, and preference persistence.",
+    "github": "https://github.com/alcarraz301997/kizuna-app",
+    "url": "",
+    "tech": [
+      "Laravel",
+      "React",
+      "Inertia.js",
+      "Tailwind CSS",
+      "TypeScript"
+    ]
+  },
+  {
     "title": "Terminal Portfolio",
     "description": "Personal project portfolio inspired by an Ubuntu Linux terminal interface.",
     "github": "https://github.com/alcarraz301997/terminal-portfolio",
