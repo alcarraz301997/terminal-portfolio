@@ -1,4 +1,4 @@
-import type { Project } from "../content/projects/Project";
+import type { Project } from "../content/projects/projects.schema";
 import { projectsJsonSchema } from "../content/projects/projects.schema";
 import projectsEn from "../content/projects/en/projects.json";
 import projectsEs from "../content/projects/es/projects.json";

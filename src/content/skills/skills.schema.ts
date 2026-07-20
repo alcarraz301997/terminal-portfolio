@@ -6,3 +6,5 @@ export const skillJsonSchema = z.object({
 });
 
 export const skillsJsonSchema = z.array(skillJsonSchema);
+
+export type Skill = z.infer<typeof skillJsonSchema> & { id: number };

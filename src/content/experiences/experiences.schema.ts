@@ -11,3 +11,5 @@ export const experienceJsonSchema = z.object({
 });
 
 export const experiencesJsonSchema = z.array(experienceJsonSchema);
+
+export type Experience = z.infer<typeof experienceJsonSchema> & { id: number };

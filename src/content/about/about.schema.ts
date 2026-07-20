@@ -10,3 +10,5 @@ export const aboutSchema = z.object({
   whoamiCommand: z.string(),
   whoamiText: z.string(),
 });
+
+export type About = z.infer<typeof aboutSchema>;

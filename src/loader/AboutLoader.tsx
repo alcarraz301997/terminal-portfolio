@@ -1,4 +1,4 @@
-import type { About } from "../content/about/About";
+import type { About } from "../content/about/about.schema";
 import { aboutSchema } from "../content/about/about.schema";
 import aboutEn from "../content/about/en/about.json";
 import aboutEs from "../content/about/es/about.json";

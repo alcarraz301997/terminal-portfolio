@@ -1,4 +1,4 @@
-import type { Experience } from "../content/experiences/Experience";
+import type { Experience } from "../content/experiences/experiences.schema";
 import { experiencesJsonSchema } from "../content/experiences/experiences.schema";
 import experiencesEn from "../content/experiences/en/experiences.json";
 import experiencesEs from "../content/experiences/es/experiences.json";

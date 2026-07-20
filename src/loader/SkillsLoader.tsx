@@ -1,4 +1,4 @@
-import type { Skill } from "../content/skills/Skill";
+import type { Skill } from "../content/skills/skills.schema";
 import { skillsJsonSchema } from "../content/skills/skills.schema";
 import skillsEn from "../content/skills/en/skills.json";
 import skillsEs from "../content/skills/es/skills.json";

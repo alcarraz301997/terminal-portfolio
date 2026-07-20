@@ -9,3 +9,5 @@ export const projectJsonSchema = z.object({
 });
 
 export const projectsJsonSchema = z.array(projectJsonSchema);
+
+export type Project = z.infer<typeof projectJsonSchema> & { id: number };
