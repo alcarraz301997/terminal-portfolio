@@ -1,98 +1,92 @@
-import { useState, lazy, Suspense } from "react";
-import { Box, Tabs, Tab } from "@mui/material";
+import { useEffect, lazy, Suspense } from "react";
+import { useHash } from "../hooks/useHash";
+
+const tabRoutes = {
+  "1": "#/about",
+  "2": "#/projects",
+  "3": "#/skills",
+  "4": "#/experience",
+} as const;
+
+const routeToTab = {
+  "#/about": "1",
+  "#/projects": "2",
+  "#/skills": "3",
+  "#/experience": "4",
+} as const;
 
 const About = lazy(() => import("./sections/About"));
 const Projects = lazy(() => import("./sections/Projects"));
 const Skills = lazy(() => import("./sections/Skills"));
 const Experience = lazy(() => import("./sections/Experience"));
 
-export default function TabMenu() {
-  const [value, setValue] = useState("1");
+const tabLabels: Record<string, string> = {
+  "1": "about.sh",
+  "2": "projects.sh",
+  "3": "skills.sh",
+  "4": "experience.sh",
+};
 
-  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+export default function TabMenu() {
+  const [hash, setHash] = useHash();
+
+  const currentTab = routeToTab[hash as keyof typeof routeToTab] || "1";
+
+  useEffect(() => {
+    if (!hash || hash === "#/" || hash === "") {
+      setHash("#/about");
+    }
+  }, []);
+
+  const handleChange = (tab: string) => {
+    setHash(tabRoutes[tab as keyof typeof tabRoutes]);
   };
 
   const renderContent = () => {
-    switch (value) {
-      case '1':
-        return <About/>;
-
-      case '2':
-        return <Projects/>;
-
-      case '3':
-        return <Skills/>;
-
-      case '4':
-        return <Experience/>;
-
+    switch (currentTab) {
+      case "1":
+        return <About />;
+      case "2":
+        return <Projects />;
+      case "3":
+        return <Skills />;
+      case "4":
+        return <Experience />;
       default:
-        return <About/>;
+        return <About />;
     }
-  }
+  };
 
   const tabId = (v: string) => `tab-${v}`;
   const panelId = (v: string) => `tabpanel-${v}`;
 
   return (
     <>
-      <Box component="nav" className="tab-principal">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="Portfolio sections"
-          sx={{
-            "& .MuiTabs-indicator": {
-              display: "none",
-            },
-          }}
-        >
-          <Tab
-            className="tab-terminal"
-            value="1"
-            label="about.sh"
-            disableRipple
-            id={tabId("1")}
-            aria-controls={panelId("1")}
-          />
-          <Tab
-            className="tab-terminal"
-            value="2"
-            label="projects.sh"
-            disableRipple
-            id={tabId("2")}
-            aria-controls={panelId("2")}
-          />
-          <Tab
-            className="tab-terminal"
-            value="3"
-            label="skills.sh"
-            disableRipple
-            id={tabId("3")}
-            aria-controls={panelId("3")}
-          />
-          <Tab
-            className="tab-terminal"
-            value="4"
-            label="experience.sh"
-            disableRipple
-            id={tabId("4")}
-            aria-controls={panelId("4")}
-          />
-        </Tabs>
-      </Box>
-      <div role="tabpanel" id={panelId(value)} aria-labelledby={tabId(value)}>
+      <nav className="tab-principal">
+        <div className="tabs-container" role="tablist" aria-label="Portfolio sections">
+          {Object.entries(tabLabels).map(([key, label]) => (
+            <button
+              key={key}
+              className={`tab-terminal ${currentTab === key ? "active" : ""}`}
+              role="tab"
+              aria-selected={currentTab === key}
+              aria-controls={panelId(key)}
+              id={tabId(key)}
+              onClick={() => handleChange(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </nav>
+      <div
+        role="tabpanel"
+        id={panelId(currentTab)}
+        aria-labelledby={tabId(currentTab)}
+      >
         <Suspense
           fallback={
-            <div
-              style={{
-                padding: "2rem",
-                textAlign: "center",
-                fontFamily: "var(--text-family)",
-                color: "var(--color-text-description)",
-              }}
-            >
+            <div className="loading-fallback">
               <span>$ loading<span className="cursor">_</span></span>
             </div>
           }
