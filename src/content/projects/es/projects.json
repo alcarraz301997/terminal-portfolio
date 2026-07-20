@@ -1,5 +1,18 @@
 [
   {
+    "title": "Kizuna App",
+    "description": "Aplicación para gestionar gastos de bodas con diseño claymorfismo, responsive mobile-first y sistema de temas personalizables. Incluye tablas adaptativas, formularios touch-friendly y persistencia de preferencias.",
+    "github": "https://github.com/alcarraz301997/kizuna-app",
+    "url": "",
+    "tech": [
+      "Laravel",
+      "React",
+      "Inertia.js",
+      "Tailwind CSS",
+      "TypeScript"
+    ]
+  },
+  {
     "title": "Terminal-portfolio",
     "description": "Portafolio de proyectos personales basado en un terminal de Ubuntu Linux.",
     "github": "https://github.com/alcarraz301997/terminal-portfolio",
