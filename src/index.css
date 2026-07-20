@@ -277,6 +277,12 @@ span {
   align-items: flex-start;
 }
 
+.project-header {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .card-header-title {
   display: flex;
   align-items: center;

@@ -19,8 +19,8 @@ export default function Projects() {
 
       <div className="cards">
         {projects.map((p) => (
-          <div className="card" key={p.id}>
-            <div className="card-header">
+          <div className="card project-card" key={p.id}>
+            <div className="card-header project-header">
               <div className="card-header-title">
                 <CodeIcon />
                 <h3 className="card-title">{p.title}</h3>
